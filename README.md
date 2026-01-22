@@ -1,39 +1,39 @@
-# Task Manager – Full Stack Web App
+# 🗂 Task Manager – Full Stack Web App
 
-A secure, scalable Task Manager web application.
+A secure, scalable **Task Manager web application** with authentication and user-specific task management.
 
 ---
 
 ## 🚀 Features
 
-### Authentication
+### 🔐 Authentication
 - User registration & login
 - JWT-based authentication
 - Protected routes
 
-### Dashboard
-- Create, read, update, delete tasks
+### 📊 Dashboard
+- Create, read, update, and delete tasks (CRUD)
 - User-specific tasks
 - Search tasks by title
-- Filter tasks by status (pending / completed)
+- Filter tasks by status (**Pending / Completed**)
 - Logout functionality
 
-### Security
-- Password hashing using bcrypt
+### 🛡 Security
+- Password hashing using **bcrypt**
 - JWT verification middleware
-- API route protection
+- Secure API route protection
 
 ---
 
 ## 🛠 Tech Stack
 
-### Frontend
+### 🌐 Frontend
 - React
 - Tailwind CSS
 - React Router
 - Axios
 
-### Backend
+### 🧠 Backend
 - Node.js
 - Express.js
 - MongoDB (Atlas)
@@ -44,8 +44,12 @@ A secure, scalable Task Manager web application.
 
 ## ⚙️ How to Run Locally
 
-### Backend
+### 📦 Backend
 ```bash
 cd backend
+npm install
+npm run dev
+
+cd frontend
 npm install
 npm run dev
