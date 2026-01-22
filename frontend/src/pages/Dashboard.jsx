@@ -5,13 +5,12 @@ import { useAuth } from "../context/useAuth";
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [title, setTitle] = useState("");
-
-  // 🔍 NEW
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("all");
 
   const { logout } = useAuth();
 
+  // ✅ keep fetchTasks as a normal async function
   const fetchTasks = async () => {
     const { data } = await API.get("/tasks");
     setTasks(data);
@@ -36,11 +35,14 @@ const Dashboard = () => {
     fetchTasks();
   };
 
+  // ✅ FIXED useEffect (eslint-safe)
   useEffect(() => {
-    fetchTasks();
+    const loadTasks = async () => {
+      await fetchTasks();
+    };
+    loadTasks();
   }, []);
 
-  // 🔍 NEW: search + filter logic
   const filteredTasks = tasks.filter((task) => {
     const matchesSearch = task.title
       .toLowerCase()
@@ -64,7 +66,6 @@ const Dashboard = () => {
         </button>
       </div>
 
-      {/* 🔍 Search + Filter */}
       <div className="flex gap-2 mb-4">
         <input
           placeholder="Search tasks..."
@@ -84,7 +85,6 @@ const Dashboard = () => {
         </select>
       </div>
 
-      {/* Add Task */}
       <div className="flex mb-4">
         <input
           value={title}
@@ -100,7 +100,6 @@ const Dashboard = () => {
         </button>
       </div>
 
-      {/* Task List */}
       {filteredTasks.map((task) => (
         <div
           key={task._id}
